@@ -5,16 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatButtonModule
+    AngularMaterialModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()

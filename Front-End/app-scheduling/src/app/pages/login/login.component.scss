@@ -1,0 +1,67 @@
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        margin: 0;
+    }
+
+    gap: 20px;
+
+    &__title {
+        font-size: 50px;
+        font-weight: 600;
+        font-family: "Inria Serif", serif;
+    }
+
+    &__pages {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__mid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 280px;
+    }
+
+    &__page {
+        cursor: pointer;
+        color: #a6a6a6;
+    }
+
+    &__pageSelected {
+        color: #00a3ff;
+        text-decoration: underline;
+    }
+
+    &__forgetPassword {
+        color: #00a3ff;
+        cursor: pointer;
+        font-size: small;
+        text-align: center;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__input {
+        width: 100%;
+        height: 25px;
+    }
+}
+
+#buttonLogin {
+    height: 45px;
+    width: 320px;
+    border-radius: 10px;
+}
