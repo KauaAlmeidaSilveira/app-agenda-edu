@@ -1,0 +1,37 @@
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__pages {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__page {
+        cursor: pointer;
+    }
+
+    &__pageSelected {
+        color: #00A3FF;
+        text-decoration: underline;
+    }
+
+    &__forgetPassword {
+        color: #00A3FF;
+        cursor: pointer;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+}
+
+
+
