@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+    selector: 'app-login-page',
+    templateUrl: './login-page.component.html',
+    styleUrl: './login-page.component.scss',
 })
-export class LoginComponent {
-
+export class LoginPageComponent {
     account = {
         email: '',
         password: ''
@@ -16,5 +15,4 @@ export class LoginComponent {
         console.log(this.account.email)
         console.log(this.account.password)
     }
-
 }
