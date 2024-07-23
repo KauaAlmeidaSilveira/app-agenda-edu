@@ -1,0 +1,25 @@
+.main {
+
+    &__title {
+        font-size: 50px;
+        font-weight: 600;
+        font-family: "Inria Serif", serif;
+    }
+
+    &__pages {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__page {
+        cursor: pointer;
+        color: #a6a6a6;
+    }
+
+    &__pageSelected {
+        color: #00a3ff;
+        text-decoration: underline;
+    }
+
+}
