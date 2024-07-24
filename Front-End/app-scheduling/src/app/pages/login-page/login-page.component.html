@@ -5,7 +5,19 @@
     </div>
 
     <div class="main__mid">
-        <app-auth-form></app-auth-form>
+        <form>
+            <app-primary-input 
+                [type]="'email'" 
+                [placeholder]="'Email'">
+            </app-primary-input>
+
+            <app-primary-input 
+                [type]="'password'" 
+                [placeholder]="'Password'">
+            </app-primary-input>
+
+            <span class="forgetPassword">Esqueci minha senha</span>
+        </form>
     </div>
 
     <div class="main__bottom">

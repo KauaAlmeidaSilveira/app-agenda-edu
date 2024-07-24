@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthFormComponent } from './auth-form.component';
+import { PrimaryInputComponent } from './primary-input.component';
 
-describe('AuthFormComponent', () => {
-  let component: AuthFormComponent;
-  let fixture: ComponentFixture<AuthFormComponent>;
+describe('PrimaryInputComponent', () => {
+  let component: PrimaryInputComponent;
+  let fixture: ComponentFixture<PrimaryInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AuthFormComponent]
+      declarations: [PrimaryInputComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AuthFormComponent);
+    fixture = TestBed.createComponent(PrimaryInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

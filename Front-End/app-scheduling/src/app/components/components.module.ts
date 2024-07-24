@@ -4,13 +4,14 @@ import { AngularMaterialModule } from "../angular-material/angular-material.modu
 import { ActionButtonComponent } from "./action-button/action-button.component";
 import { HeaderPageComponent } from './header-page/header-page.component';
 import { FormsModule } from "@angular/forms";
-import { AuthFormComponent } from './auth-form/auth-form.component';
+
+import { PrimaryInputComponent } from './primary-input/primary-input.component';
 
 @NgModule({
     declarations: [
         ActionButtonComponent,
         HeaderPageComponent,
-        AuthFormComponent,
+        PrimaryInputComponent,
     ],
     imports: [
         AngularMaterialModule,
@@ -20,7 +21,7 @@ import { AuthFormComponent } from './auth-form/auth-form.component';
     exports: [
         ActionButtonComponent,
         HeaderPageComponent,
-        AuthFormComponent
+        PrimaryInputComponent
     ]
 })
 export class ComponentsModule { }
