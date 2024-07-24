@@ -3,8 +3,12 @@
         <h1 class="title"> {{ title }} </h1>
     
         <div class="navPage">
-            <p class="page"  [ngClass]="{'pageSelected': pageType === 'Login'}">Login</p>
-            <p class="page" [ngClass]="{'pageSelected': pageType === 'Signup'}">Cadastrar</p>
+            <p class="page"  
+                [ngClass]="{'pageSelected': pageType === 'Login'}"
+                (click)="navigate('Login')">Login</p>
+            <p class="page" 
+                [ngClass]="{'pageSelected': pageType === 'Signup'}"
+                (click)="navigate('Signup')">Cadastrar</p>
         </div>
     
         <ng-content></ng-content>

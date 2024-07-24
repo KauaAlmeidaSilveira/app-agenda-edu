@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-default-login-layout',
@@ -15,6 +16,16 @@ export class DefaultLoginLayoutComponent {
 
   submit(){
     this.onSubmit.emit();
+  }
+
+  constructor(private router: Router) {}
+
+  navigate(page: string){
+    if(page === 'Login'){
+      this.router.navigate(['/login'])
+    }else if(page === 'Signup'){
+      this.router.navigate(['/signup'])
+    }
   }
 
 }
