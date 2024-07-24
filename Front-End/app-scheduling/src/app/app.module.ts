@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ComponentsModule } from './components/components.module';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { ScheduleMenuComponent } from './pages/schedule-menu/schedule-menu.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     AppComponent,
     LoginPageComponent,
     SignupPageComponent,
+    ScheduleMenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    AngularMaterialModule
   ],
   providers: [
     provideAnimationsAsync()
