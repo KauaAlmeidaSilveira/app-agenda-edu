@@ -1,7 +1,7 @@
 <app-default-login-layout
-    title="Login"
-    btnText="Login"
-    pageType="Login"
+    title="Cadastro"
+    btnText="Cadastrar"
+    pageType="Signup"
     (submit)="submit()"
 >
     <form>
@@ -17,6 +17,11 @@
             (value)="setPassword($event)">
         </app-primary-input>
 
-        <span class="forgetPassword">Esqueci minha senha</span>
+        <app-primary-input 
+            [type]="'password'" 
+            [placeholder]="'Confirme sua Senha'"
+            (value)="setConfirmPassword($event)">
+        </app-primary-input>
+
     </form>
 </app-default-login-layout>

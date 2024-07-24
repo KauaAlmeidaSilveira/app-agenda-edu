@@ -22,11 +22,18 @@ main {
         .navPage {
             display: flex;
             gap: 10px;
-            p {
+
+            .page {
                 margin: 0;
                 cursor: pointer;
                 color: #a6a6a6;
             }
+
+            .pageSelected {
+                color: blue;
+                font-weight: bold;
+            }
+
         }
 
         button {

@@ -7,8 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class DefaultLoginLayoutComponent {
 
-  @Input({required:true}) title: string = ''
+  @Input({required:true}) title: 'Login' | 'Cadastro' = 'Login'
   @Input({required:true}) btnText: string = ''
+  @Input({required:true}) pageType: 'Login' | 'Signup' = 'Login'
 
   @Output("submit") onSubmit = new EventEmitter();
 
