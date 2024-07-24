@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type InputTypes = 'text' | 'password' | 'email';
 
@@ -11,5 +11,19 @@ export class PrimaryInputComponent {
 
   @Input({required:true}) type: InputTypes = 'text';
   @Input({required:true}) placeholder: string = '';
+
+  value: string = ''
+
+  onInput(event: Event){
+    this.value = (event.target as HTMLInputElement).value;
+    this.onChange(this.value)
+  }
+
+  @Output('value') valueEmit = new EventEmitter<string>();
+
+  onChange(value: string){
+    this.valueEmit.emit(value)
+  }
+
 
 }

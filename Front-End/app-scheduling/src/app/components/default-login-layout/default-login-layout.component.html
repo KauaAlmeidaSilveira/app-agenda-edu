@@ -1,0 +1,14 @@
+<main>
+    <div class="form-wrapper">
+        <h1 class="title"> {{ title }} </h1>
+    
+        <div class="navPage">
+            <p>Login</p>
+            <p>Cadastrar</p>
+        </div>
+    
+        <ng-content></ng-content>
+    
+        <button mat-flat-button (click)="submit()">{{ btnText }}</button>
+    </div>    
+</main>

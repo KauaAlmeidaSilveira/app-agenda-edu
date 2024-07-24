@@ -1,17 +1,15 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularMaterialModule } from "../angular-material/angular-material.module";
-import { ActionButtonComponent } from "./action-button/action-button.component";
-import { HeaderPageComponent } from './header-page/header-page.component';
 import { FormsModule } from "@angular/forms";
 
 import { PrimaryInputComponent } from './primary-input/primary-input.component';
+import { DefaultLoginLayoutComponent } from './default-login-layout/default-login-layout.component';
 
 @NgModule({
     declarations: [
-        ActionButtonComponent,
-        HeaderPageComponent,
         PrimaryInputComponent,
+        DefaultLoginLayoutComponent,
     ],
     imports: [
         AngularMaterialModule,
@@ -19,9 +17,8 @@ import { PrimaryInputComponent } from './primary-input/primary-input.component';
         BrowserModule
     ],
     exports: [
-        ActionButtonComponent,
-        HeaderPageComponent,
-        PrimaryInputComponent
+        PrimaryInputComponent,
+        DefaultLoginLayoutComponent,
     ]
 })
 export class ComponentsModule { }

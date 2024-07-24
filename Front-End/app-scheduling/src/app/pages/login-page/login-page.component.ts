@@ -6,13 +6,21 @@ import { Component } from '@angular/core';
     styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
+
     account = {
         email: '',
         password: ''
     }
 
-    onClick() {
-        console.log(this.account.email)
-        console.log(this.account.password)
+    submit() {
+        console.log(`Email: ${this.account.email}\nSenha: ${this.account.password}`);
+    }
+
+    setEmail(value: string){
+        this.account.email = value
+    }
+
+    setPassword(value: string){
+        this.account.password = value
     }
 }

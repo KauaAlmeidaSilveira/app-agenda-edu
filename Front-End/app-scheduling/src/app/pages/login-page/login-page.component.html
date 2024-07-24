@@ -1,27 +1,21 @@
-<div class="main">
+<app-default-login-layout
+    title="Login"
+    btnText="Login"
+    (submit)="submit()"
+>
+    <form>
+        <app-primary-input 
+            [type]="'email'" 
+            [placeholder]="'Email'"
+            (value)="setEmail($event)">
+        </app-primary-input>
 
-    <div class="main__top">
-        <app-header-page [title]="'Login'"></app-header-page>
-    </div>
+        <app-primary-input 
+            [type]="'password'" 
+            [placeholder]="'Password'"
+            (value)="setPassword($event)">
+        </app-primary-input>
 
-    <div class="main__mid">
-        <form>
-            <app-primary-input 
-                [type]="'email'" 
-                [placeholder]="'Email'">
-            </app-primary-input>
-
-            <app-primary-input 
-                [type]="'password'" 
-                [placeholder]="'Password'">
-            </app-primary-input>
-
-            <span class="forgetPassword">Esqueci minha senha</span>
-        </form>
-    </div>
-
-    <div class="main__bottom">
-        <app-action-button [label]="'Logar'" (onClickEmmit)="onClick()"></app-action-button>
-    </div>
-
-</div>
+        <span class="forgetPassword">Esqueci minha senha</span>
+    </form>
+</app-default-login-layout>
