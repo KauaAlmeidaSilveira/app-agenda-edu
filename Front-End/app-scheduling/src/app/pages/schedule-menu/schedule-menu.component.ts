@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-schedule-menu',
@@ -59,4 +60,11 @@ export class ScheduleMenuComponent {
     }
   ];
 
+  constructor(private router: Router) {}
+
+  navigate(page: string){
+    if(page === 'bookingForm'){
+      this.router.navigate(['/bookingForm'])
+    }
+  }
 }

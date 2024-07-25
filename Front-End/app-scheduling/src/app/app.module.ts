@@ -11,6 +11,7 @@ import { ComponentsModule } from './components/components.module';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ScheduleMenuComponent } from './pages/schedule-menu/schedule-menu.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { BookingFormComponent } from './pages/booking-form/booking-form.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     LoginPageComponent,
     SignupPageComponent,
     ScheduleMenuComponent,
+    BookingFormComponent,
   ],
   imports: [
     BrowserModule,
