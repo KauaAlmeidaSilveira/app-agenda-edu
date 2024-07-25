@@ -5,11 +5,13 @@ import { FormsModule } from "@angular/forms";
 
 import { PrimaryInputComponent } from './primary-input/primary-input.component';
 import { DefaultLoginLayoutComponent } from './default-login-layout/default-login-layout.component';
+import { BookingItemComponent } from './booking-item/booking-item.component';
 
 @NgModule({
     declarations: [
         PrimaryInputComponent,
         DefaultLoginLayoutComponent,
+        BookingItemComponent,
     ],
     imports: [
         AngularMaterialModule,
@@ -19,6 +21,7 @@ import { DefaultLoginLayoutComponent } from './default-login-layout/default-logi
     exports: [
         PrimaryInputComponent,
         DefaultLoginLayoutComponent,
+        BookingItemComponent,
     ]
 })
 export class ComponentsModule { }

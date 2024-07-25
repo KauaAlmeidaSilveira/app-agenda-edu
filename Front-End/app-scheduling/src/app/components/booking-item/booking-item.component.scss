@@ -1,0 +1,21 @@
+.booking-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 260px;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.booking-content {
+    padding-left: 0.5rem;
+}
+
+.booking-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.booking-location {
+    text-align: center;
+    border-bottom: 1px solid silver;
+}

@@ -1,13 +1,14 @@
 <main>
+    <div class="menuSection">
+        <h1 class="title">Menu</h1>
 
-    <h1 class="title">Menu</h1>
+        <button mat-flat-button class="new-booking-btn">Novo Agendamento</button>
 
-    <!-- <button mat-flat-button class="new-booking-btn">Novo Agendamento</button> -->
-
-    <ul class="bookings-list">
-        <li class="booking-item">Agendamento 1</li>
-        <li class="booking-item">Agendamento 2</li>
-        <li class="booking-item">Agendamento 3</li>
-    </ul>
-
+        <div class="bookings-section">
+            <h2 class="subTitle">Meus Agendamentos</h2>
+            <ul class="bookings-list">
+                <app-booking-item *ngFor="let booking of bookings" [booking]="booking"></app-booking-item>
+            </ul>
+        </div>
+    </div>
 </main>
