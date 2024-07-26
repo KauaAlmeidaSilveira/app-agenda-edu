@@ -5,6 +5,13 @@
     (submit)="submit()"
 >
     <form>
+
+        <app-primary-input 
+            [type]="'text'" 
+            [placeholder]="'Nome'"
+            (value)="setName($event)">
+        </app-primary-input>
+
         <app-primary-input 
             [type]="'email'" 
             [placeholder]="'Email'"

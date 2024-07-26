@@ -8,17 +8,23 @@ import { Component } from '@angular/core';
 export class SignupPageComponent {
 
   account = {
+    nome:'',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   }
 
   submit() {
     console.log(`
+      Nome: ${this.account.nome}\n
       Email: ${this.account.email}\n
       Senha: ${this.account.password}\n
       Confirmação senha: ${this.account.confirmPassword}
       `);
+  }
+
+  setName(value: string){
+    this.account.nome = value
   }
 
   setEmail(value: string) {

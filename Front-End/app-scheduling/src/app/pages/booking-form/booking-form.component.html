@@ -1,1 +1,22 @@
-<p>booking-form works!</p>
+<app-default-login-layout 
+    [btnText]="'Agendar'" 
+    [title]="'Agendamento'" 
+    [pageType]="'bookingForm'"
+    [disableNavPage]="true">
+
+    <form class="booking-form">
+
+        <mat-form-field class="select-local">
+            <mat-label>Local</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let local of locais" [value]="local.value">
+                    {{local.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+
+    </form>
+
+</app-default-login-layout>

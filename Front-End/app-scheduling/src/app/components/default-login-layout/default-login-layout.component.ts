@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
 })
 export class DefaultLoginLayoutComponent {
 
-  @Input({required:true}) title: 'Login' | 'Cadastro' = 'Login'
+  @Input({required:true}) title: string = 'Title'
   @Input({required:true}) btnText: string = ''
-  @Input({required:true}) pageType: 'Login' | 'Signup' = 'Login'
+  @Input({required:true}) pageType: 'Login' | 'Signup' | 'bookingForm' = 'Login'
+  @Input("disableNavPage") isDisabled: boolean = false
 
   @Output("submit") onSubmitEmmit = new EventEmitter();
 

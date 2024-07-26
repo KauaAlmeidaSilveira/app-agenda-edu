@@ -2,7 +2,7 @@
     <div class="form-wrapper">
         <h1 class="title"> {{ title }} </h1>
     
-        <div class="navPage">
+        <div class="navPage" *ngIf="!isDisabled">
             <p class="page"  
                 [ngClass]="{'pageSelected': pageType === 'Login'}"
                 (click)="navigate('Login')">Login</p>
