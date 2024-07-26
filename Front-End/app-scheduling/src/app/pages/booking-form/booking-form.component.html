@@ -2,21 +2,57 @@
     [btnText]="'Agendar'" 
     [title]="'Agendamento'" 
     [pageType]="'bookingForm'"
-    [disableNavPage]="true">
+    [disableNavPage]="true"
+    (submit)="showInfoBooking()">
 
     <form class="booking-form">
 
-        <mat-form-field class="select-local">
+        <!-- <mat-form-field> -->
             <mat-label>Local</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let local of locais" [value]="local.value">
-                    {{local.viewValue}}
+            <mat-select [(ngModel)]="booking.local" name="local">
+                <mat-option 
+                    *ngFor="let local of locais" 
+                    [value]="local.value">
+                    {{ local.viewValue }}
                 </mat-option>
             </mat-select>
-        </mat-form-field>
+        <!-- </mat-form-field> -->
 
-        
+        <div class="input-date">
+            <mat-label>Data do agendamento</mat-label>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="booking.date" name="date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
 
+        <!-- <mat-form-field> -->
+            <mat-label>Horario de entrada</mat-label>
+            <mat-select [(ngModel)]="booking.horarioEntrada" name="horarioEntrada">
+                <mat-option *ngFor="let horario of horarioEntrada" [value]="horario.value">
+                    {{ horario.viewValue }}
+                </mat-option>
+            </mat-select>
+        <!-- </mat-form-field> -->
+
+        <!-- <mat-form-field> -->
+            <mat-label>Horario de saída</mat-label>
+            <mat-select [(ngModel)]="booking.horarioSaida" name="horarioSaida">
+                <mat-option *ngFor="let horario of horarioSaida" [value]="horario.value">
+                    {{ horario.viewValue }}
+                </mat-option>
+            </mat-select>
+        <!-- </mat-form-field> -->
+
+        <!-- <mat-form-field> -->
+            <mat-label>Turma</mat-label>
+            <mat-select [(ngModel)]="booking.turma" name="turma">
+                <mat-option *ngFor="let turma of turmas" [value]="turma.value">
+                    {{ turma.viewValue }}
+                </mat-option>
+            </mat-select>
+        <!-- </mat-form-field> -->
     </form>
 
 </app-default-login-layout>

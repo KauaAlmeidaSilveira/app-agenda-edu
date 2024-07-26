@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ComponentsModule } from './components/components.module';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -26,8 +26,9 @@ import { BookingFormComponent } from './pages/booking-form/booking-form.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     ComponentsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
   ],
   providers: [
     provideAnimationsAsync()
