@@ -12,10 +12,10 @@ export class DefaultLoginLayoutComponent {
   @Input({required:true}) btnText: string = ''
   @Input({required:true}) pageType: 'Login' | 'Signup' = 'Login'
 
-  @Output("submit") onSubmit = new EventEmitter();
+  @Output("submit") onSubmitEmmit = new EventEmitter();
 
   submit(){
-    this.onSubmit.emit();
+    this.onSubmitEmmit.emit();
   }
 
   constructor(private router: Router) {}
