@@ -3,7 +3,7 @@
     border-radius: 10px;
     width: 260px;
     margin: 1rem;
-    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .booking-content {
@@ -18,4 +18,28 @@
 .booking-location {
     text-align: center;
     border-bottom: 1px solid silver;
+    font-weight: bold;
+}
+
+.booking-cancel-section {
+    display: flex;
+    justify-content: center;
+
+    .btnCancel {
+        background-color: #ff4d4d;
+        color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 100%;
+        height: 1.5rem;
+        text-align: center;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btnCancel:hover {
+        background-color: #ff3333;
+    }
 }
