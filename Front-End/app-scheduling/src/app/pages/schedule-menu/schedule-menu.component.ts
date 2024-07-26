@@ -60,6 +60,10 @@ export class ScheduleMenuComponent {
     }
   ];
 
+  showInfoItem(object:any) {
+    console.log(object)
+  }
+
   constructor(private router: Router) {}
 
   navigate(page: string){

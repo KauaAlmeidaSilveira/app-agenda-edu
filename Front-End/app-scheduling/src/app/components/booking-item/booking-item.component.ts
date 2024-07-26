@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 type booking_item = {
@@ -16,13 +16,17 @@ type booking_item = {
 })
 export class BookingItemComponent {
 
-  booking_item = {
+  @Input({ required: true }) booking: booking_item = {
     location: '',
-    startTime: '',
-    endTime: '',
-    date: '',
-    class: ''
-  }
+    startTime:'',
+    endTime:'',
+    date:'',
+    class:''
+  };
 
-  @Input({ required: true }) booking: booking_item = this.booking_item;
+  @Output() cancelBookingEmmit = new EventEmitter<booking_item>();
+
+  cancelBooking() {
+    this.cancelBookingEmmit.emit(this.booking);
+  }
 }
