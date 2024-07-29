@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app-scheduling": {
+    "app-agenda-edu": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/app-scheduling",
+            "outputPath": "dist/app-agenda-edu",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app-scheduling:build:production"
+              "buildTarget": "app-agenda-edu:build:production"
             },
             "development": {
-              "buildTarget": "app-scheduling:build:development"
+              "buildTarget": "app-agenda-edu:build:development"
             }
           },
           "defaultConfiguration": "development"
