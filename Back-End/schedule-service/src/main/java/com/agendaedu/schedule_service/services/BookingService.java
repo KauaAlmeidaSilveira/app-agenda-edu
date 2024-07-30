@@ -24,7 +24,7 @@ public class BookingService {
         return new BookingDTO(booking);
     }
 
-    public List<BookingDTO> findAll(){
+    public List<BookingDTO> findAll() {
         return repository.findAll().stream().map(BookingDTO::new).toList();
     }
 

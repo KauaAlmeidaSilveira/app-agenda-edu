@@ -13,7 +13,7 @@ public class BookingDTO {
     private Long id;
     private String local;
 
-    public BookingDTO(Booking booking){
+    public BookingDTO(Booking booking) {
         this.id = booking.getId();
         this.local = booking.getLocal();
     }

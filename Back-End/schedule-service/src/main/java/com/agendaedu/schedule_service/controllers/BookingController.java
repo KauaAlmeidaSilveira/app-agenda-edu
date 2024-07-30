@@ -16,12 +16,12 @@ public class BookingController {
     private BookingService service;
 
     @PostMapping
-    public ResponseEntity<BookingDTO> insert(@RequestBody BookingDTO bookingDTO){
+    public ResponseEntity<BookingDTO> insert(@RequestBody BookingDTO bookingDTO) {
         return ResponseEntity.ok(service.insert(bookingDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<BookingDTO>> findAll(){
+    public ResponseEntity<List<BookingDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
