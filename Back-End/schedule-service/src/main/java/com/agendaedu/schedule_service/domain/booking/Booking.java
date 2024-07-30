@@ -1,4 +1,4 @@
-package com.agendaedu.schedule_service.domain;
+package com.agendaedu.schedule_service.domain.booking;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
