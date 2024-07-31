@@ -11,7 +11,6 @@ import com.agendaedu.schedule_service.repositories.UserRepository;
 import com.agendaedu.schedule_service.services.exceptions.InvalidCredentialsException;
 import com.agendaedu.schedule_service.services.exceptions.UserAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,12 +33,13 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        return userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Conta não encontrada !!"));
     }
 
     @Transactional(readOnly = true)
     public LoginResponseDTO login(LoginRequestDTO authDTO) {
-        User user = this.userRepository.findByEmail(authDTO.email()).orElseThrow(() -> new UsernameNotFoundException("User not Found !!"));
+        User user = (User) this.loadUserByUsername(authDTO.email());
         if (passwordEncoder.matches(authDTO.password(), user.getPassword())) {
             String token = this.tokenService.generateToken(user);
             return new LoginResponseDTO(user.getEmail(), token);
