@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -31,6 +32,14 @@ public class User implements UserDetails {
         this.password = password;
         this.name = name;
         this.role = role;
+    }
+
+    public User(UserDTO userDTO) {
+        this.id = userDTO.getId();
+        this.email = userDTO.getEmail();
+        this.password = userDTO.getPassword();
+        this.name = userDTO.getName();
+        this.role = Objects.equals(userDTO.getRole(), UserRole.ADMIN.getRole()) ? UserRole.ADMIN : UserRole.USER;
     }
 
     @Override

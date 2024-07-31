@@ -1,13 +1,11 @@
 package com.agendaedu.schedule_service.controllers;
 
-import com.agendaedu.schedule_service.domain.user.AuthenticationDTO;
-import com.agendaedu.schedule_service.domain.user.LoginResponseDTO;
-import com.agendaedu.schedule_service.domain.user.RegisterDTO;
-import com.agendaedu.schedule_service.domain.user.User;
+import com.agendaedu.schedule_service.domain.user.*;
 import com.agendaedu.schedule_service.infra.security.TokenService;
-import com.agendaedu.schedule_service.repositories.UserRepository;
+import com.agendaedu.schedule_service.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,13 +23,13 @@ public class AuthenticationController {
     private AuthenticationManager authManager;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
+    public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authManager.authenticate(usernamePassword);
 
@@ -41,13 +39,15 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
-        if (this.userRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
+    public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
+        if (this.userService.findByEmail(data.email()) != null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists !!");
+        }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User user = new User(data.email(), encryptedPassword, data.name(), data.role());
+        UserDTO user = new UserDTO(new User(data.email(), encryptedPassword, data.name(), data.role()));
 
-        this.userRepository.save(user);
+        this.userService.insert(user);
         return ResponseEntity.ok().build();
     }
 
