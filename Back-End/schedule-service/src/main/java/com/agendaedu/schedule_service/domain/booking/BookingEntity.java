@@ -1,5 +1,8 @@
 package com.agendaedu.schedule_service.domain.booking;
 
+import com.agendaedu.schedule_service.domain.local.Local;
+import com.agendaedu.schedule_service.domain.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,20 +15,20 @@ import java.time.LocalTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookingDTO {
+@Entity
+@Table(name = "tb_booking")
+public class BookingEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String local;
     private LocalDate date;
     private LocalTime checkIn;
     private LocalTime checkOut;
     private String course;
 
-    public BookingDTO(BookingEntity bookingEntity) {
-        this.id = bookingEntity.getId();
-        this.local = bookingEntity.getLocal().getName();
-        this.date = bookingEntity.getDate();
-        this.checkIn = bookingEntity.getCheckIn();
-        this.checkOut = bookingEntity.getCheckOut();
-        this.course = bookingEntity.getCourse();
-    }
+    @OneToOne
+    private Local local;
+
+    @ManyToOne
+    private User user;
 }

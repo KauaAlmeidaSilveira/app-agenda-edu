@@ -1,5 +1,6 @@
 package com.agendaedu.schedule_service.domain.user;
 
+import com.agendaedu.schedule_service.domain.booking.BookingEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +28,12 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookingEntity> bookingEntityList;
 
     public User(String email, String password, String name, UserRole role) {
         this.email = email;
