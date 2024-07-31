@@ -16,7 +16,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_user")
-@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
 
     @Id
@@ -52,6 +51,11 @@ public class User implements UserDetails {
         } else {
             return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         }
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 
     @Override

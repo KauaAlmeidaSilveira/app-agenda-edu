@@ -1,6 +1,7 @@
 package com.agendaedu.schedule_service.controllers.handler;
 
-import com.agendaedu.schedule_service.services.exceptions.InvalidCredentialsExceptions;
+import com.agendaedu.schedule_service.services.exceptions.InvalidCredentialsException;
+import com.agendaedu.schedule_service.services.exceptions.UserAlreadyExistsException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,16 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(error);
     }
 
-    @ExceptionHandler(InvalidCredentialsExceptions.class)
-    public ResponseEntity<CustomError> invalidCredentialsExceptions(InvalidCredentialsExceptions e, HttpServletRequest request) {
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<CustomError> invalidCredentialsExceptions(InvalidCredentialsException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.UNAUTHORIZED;
+        CustomError error = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(error);
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<CustomError> userAlreadyExistsException(UserAlreadyExistsException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.CONFLICT;
         CustomError error = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(error);
     }
