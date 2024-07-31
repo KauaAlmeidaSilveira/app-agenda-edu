@@ -3,6 +3,7 @@ package com.agendaedu.schedule_service.services;
 import com.agendaedu.schedule_service.domain.user.User;
 import com.agendaedu.schedule_service.domain.user.UserDTO;
 import com.agendaedu.schedule_service.repositories.UserRepository;
+import com.agendaedu.schedule_service.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,8 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public UserDetails findByEmail(String email) {
-        return this.repository.findByEmail(email);
+        return this.repository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Conta não encontrada !!"));
     }
 
     @Transactional
