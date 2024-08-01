@@ -27,12 +27,12 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid LoginRequestDTO data) {
+    public ResponseEntity login(@Valid @RequestBody LoginRequestDTO data) {
         return ResponseEntity.ok(this.authService.login(data));
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid RegisterRequestDTO data) {
+    public ResponseEntity register(@Valid @RequestBody RegisterRequestDTO data) {
         RegisterReponseDTO account = this.authService.register(data);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{email}")
                 .buildAndExpand(account.email()).toUri();

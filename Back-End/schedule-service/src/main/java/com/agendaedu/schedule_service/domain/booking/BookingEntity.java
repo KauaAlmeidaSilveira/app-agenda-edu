@@ -26,7 +26,7 @@ public class BookingEntity {
     private LocalTime checkOut;
     private String course;
 
-    @OneToOne
+    @ManyToOne
     private Local local;
 
     @ManyToOne

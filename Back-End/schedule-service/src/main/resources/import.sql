@@ -16,4 +16,4 @@ INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VA
 INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-02', '10:00:00', '11:00:00', 'Jardim', 2, 2);
 INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-03', '11:00:00', '12:00:00', 'Pré', 3, 1);
 INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-04', '12:00:00', '13:00:00', '1º Ano', 4, 2);
---INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-05', '13:00:00', '14:00:00', '1º Série', 1, 1);
+INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-05', '13:00:00', '14:00:00', '1º Série', 1, 1);

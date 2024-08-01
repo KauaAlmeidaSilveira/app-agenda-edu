@@ -1,6 +1,5 @@
 package com.agendaedu.schedule_service.domain.local;
 
-import com.agendaedu.schedule_service.domain.booking.BookingDTO;
 import com.agendaedu.schedule_service.domain.booking.BookingEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +22,7 @@ public class Local {
     @OneToOne(mappedBy = "local")
     private BookingEntity booking;
 
-    public Local(LocalDTO localDTO){
+    public Local(LocalDTO localDTO) {
         this.id = localDTO.getId();
         this.name = localDTO.getName();
     }
