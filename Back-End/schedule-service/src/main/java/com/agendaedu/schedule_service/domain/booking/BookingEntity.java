@@ -31,4 +31,12 @@ public class BookingEntity {
 
     @ManyToOne
     private User user;
+
+    public BookingEntity(BookingDTO bookingDTO) {
+        this.id = bookingDTO.getId();
+        this.date = bookingDTO.getDate();
+        this.checkIn = bookingDTO.getCheckIn();
+        this.checkOut = bookingDTO.getCheckOut();
+        this.course = bookingDTO.getCourse();
+    }
 }
