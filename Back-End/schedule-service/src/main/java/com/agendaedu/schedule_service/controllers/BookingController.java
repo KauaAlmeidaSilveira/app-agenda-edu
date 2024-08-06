@@ -1,7 +1,6 @@
 package com.agendaedu.schedule_service.controllers;
 
 import com.agendaedu.schedule_service.domain.booking.BookingDTO;
-import com.agendaedu.schedule_service.projections.BookingProjection;
 import com.agendaedu.schedule_service.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -25,7 +22,12 @@ public class BookingController {
         return ResponseEntity.ok(service.insert(bookingDTO));
     }
 
-    @GetMapping("in/{date}/{localId}")
+    @GetMapping("/myBookings")
+    public ResponseEntity<List<BookingDTO>> findBookingsByUserId() {
+        return ResponseEntity.ok(service.findBookingByUserId());
+    }
+
+    @GetMapping("/in/{date}/{localId}")
     public ResponseEntity<List<LocalTime>> findPossiblesCheckIn(
             @PathVariable LocalDate date,
             @PathVariable Long localId) {
@@ -34,7 +36,7 @@ public class BookingController {
         return ResponseEntity.ok(possiblesCheckIn);
     }
 
-    @GetMapping("out/{date}/{localId}")
+    @GetMapping("/out/{date}/{localId}")
     public ResponseEntity<List<LocalTime>> findPossiblesCheckOutWithCheckIn(
             @PathVariable LocalDate date,
             @PathVariable Long localId,
@@ -43,8 +45,6 @@ public class BookingController {
         List<LocalTime> possiblesCheckOutWithCheckIn = service.findPossiblesCheckOutWithCheckIn(bookingFiltered, checkInSelected);
         return ResponseEntity.ok(possiblesCheckOutWithCheckIn);
     }
-
-
 
     @GetMapping
     public ResponseEntity<List<BookingDTO>> findAll() {

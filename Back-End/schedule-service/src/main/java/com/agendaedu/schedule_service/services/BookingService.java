@@ -45,6 +45,11 @@ public class BookingService {
         return new BookingDTO(booking);
     }
 
+    public List<BookingDTO> findBookingByUserId(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return this.bookingRepository.findByUserId(user.getId()).stream().map(BookingDTO::new).toList();
+    }
+
     public List<BookingDTO> findBookingByDateAndLocal(LocalDate date, Long localId) {
         return this.bookingRepository.findBookingByDateAndLocal(date, localId).stream().map(BookingDTO::new).collect(Collectors.toList());
     }
@@ -68,7 +73,7 @@ public class BookingService {
         List<LocalTime> possiblesCheckOutWithCheckIn = new ArrayList<>();
         System.out.println("Com filtro do checkin: " + possiblesCheckOut);
 
-        for (int i=0; i < possiblesCheckOut.size(); i++){
+        for (int i = 0; i < possiblesCheckOut.size(); i++) {
             possiblesCheckOutWithCheckIn.add(possiblesCheckOut.get(i));
             if (i + 1 < possiblesCheckOut.size() && !possiblesCheckOut.get(i + 1).equals(possiblesCheckOut.get(i).plusHours(1))) {
                 break;
@@ -84,6 +89,7 @@ public class BookingService {
         possiblesCheckOut.remove(0);
         return possiblesCheckOut;
     }
+
     private List<LocalTime> removeHours(List<LocalTime> hours, List<BookingDTO> bookingsFiltered, Boolean isCheckIn) {
         List<LocalTime> eliminados = new ArrayList<>();
 

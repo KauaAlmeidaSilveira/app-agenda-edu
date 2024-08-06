@@ -32,7 +32,7 @@ public class BookingDTO {
         this.userId = bookingEntity.getUser().getId();
     }
 
-    public BookingDTO(BookingProjection bookingProjection){
+    public BookingDTO(BookingProjection bookingProjection) {
         this.id = bookingProjection.getId();
         this.localId = bookingProjection.getLocalId();
         this.date = bookingProjection.getDate();

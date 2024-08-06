@@ -5,10 +5,16 @@ import java.time.LocalTime;
 
 public interface BookingProjection {
     Long getId();
+
     String getCourse();
+
     LocalDate getDate();
+
     LocalTime getCheckIn();
+
     LocalTime getCheckOut();
+
     Long getLocalId();
+
     Long getUserId();
 }
