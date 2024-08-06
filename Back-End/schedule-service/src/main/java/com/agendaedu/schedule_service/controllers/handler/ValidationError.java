@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 public class ValidationError extends CustomError {
 
-    private List<FieldMessage> erros = new ArrayList<>();
+    private final List<FieldMessage> erros = new ArrayList<>();
 
     public ValidationError(Instant timestamp, Integer status, String erro, String path) {
         super(timestamp, status, erro, path);

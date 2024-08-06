@@ -12,23 +12,23 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/bookings")
 public class BookingController {
 
     @Autowired
     private BookingService service;
 
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<BookingDTO> insert(@RequestBody BookingDTO bookingDTO) {
         return ResponseEntity.ok(service.insert(bookingDTO));
     }
 
-    @GetMapping("/myBookings")
+    @GetMapping("/user/bookings")
     public ResponseEntity<List<BookingResponseProjection>> findBookingsByUserId() {
         return ResponseEntity.ok(service.findBookingByUserId());
     }
 
-    @GetMapping("/in/{date}/{localId}")
+    @GetMapping("/checkin/{date}/{localId}")
     public ResponseEntity<List<LocalTime>> findPossiblesCheckIn(
             @PathVariable LocalDate date,
             @PathVariable Long localId) {
@@ -37,7 +37,7 @@ public class BookingController {
         return ResponseEntity.ok(possiblesCheckIn);
     }
 
-    @GetMapping("/out/{date}/{localId}")
+    @GetMapping("/checkout/{date}/{localId}")
     public ResponseEntity<List<LocalTime>> findPossiblesCheckOutWithCheckIn(
             @PathVariable LocalDate date,
             @PathVariable Long localId,
@@ -47,7 +47,7 @@ public class BookingController {
         return ResponseEntity.ok(possiblesCheckOutWithCheckIn);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<BookingDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }

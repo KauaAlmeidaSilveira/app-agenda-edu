@@ -62,17 +62,15 @@ public class BookingService {
     public List<LocalTime> findPossiblesCheckIn(List<BookingDTO> bookingsFiltered) {
         List<LocalTime> possiblesCheckIn = new ArrayList<>(removeHours(this.hours, bookingsFiltered, true));
         possiblesCheckIn.remove(possiblesCheckIn.size() - 1);
-        System.out.println("Possiveis checkins: " + possiblesCheckIn);
         return possiblesCheckIn;
     }
 
     public List<LocalTime> findPossiblesCheckOutWithCheckIn(List<BookingDTO> bookingsFiltered, LocalTime checkInSelected) {
-        System.out.println("checkin selecionado: " + checkInSelected);
         List<LocalTime> possiblesCheckOut = findPossiblesCheckOut(bookingsFiltered);
-        System.out.println("Sem filtro do checkin: " + possiblesCheckOut);
+
         possiblesCheckOut = possiblesCheckOut.stream().filter(h -> h.isAfter(checkInSelected)).toList();
+
         List<LocalTime> possiblesCheckOutWithCheckIn = new ArrayList<>();
-        System.out.println("Com filtro do checkin: " + possiblesCheckOut);
 
         for (int i = 0; i < possiblesCheckOut.size(); i++) {
             possiblesCheckOutWithCheckIn.add(possiblesCheckOut.get(i));
@@ -81,7 +79,6 @@ public class BookingService {
             }
         }
 
-        System.out.println("Com filtro do checkin, tirando os posteriores: " + possiblesCheckOut);
         return possiblesCheckOutWithCheckIn;
     }
 
