@@ -49,12 +49,16 @@ public class AuthService implements UserDetailsService {
     }
 
     @Transactional
-    public RegisterReponseDTO register(RegisterRequestDTO authDTO) {
+    public RegisterReponseDTO signup(RegisterRequestDTO authDTO) {
         if (this.userRepository.findByEmail(authDTO.email()).isEmpty()) {
-            String encryptedPassword = new BCryptPasswordEncoder().encode(authDTO.password());
-            UserDTO user = new UserDTO(new User(authDTO.email(), encryptedPassword, authDTO.name(), authDTO.role()));
-            this.userService.insert(user);
-            return new RegisterReponseDTO(authDTO.email(), authDTO.name());
+            if (authDTO.password().equals(authDTO.confirmPassword())) {
+                String encryptedPassword = new BCryptPasswordEncoder().encode(authDTO.password());
+                UserDTO user = new UserDTO(new User(authDTO.email(), encryptedPassword, authDTO.name(), authDTO.role()));
+                this.userService.insert(user);
+                return new RegisterReponseDTO(authDTO.email(), authDTO.name());
+            } else {
+                throw new InvalidCredentialsException("As senhas não coincidem !!");
+            }
         } else {
             throw new UserAlreadyExistsException("Conta já existente com este email.");
         }

@@ -6,10 +6,10 @@ import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.domain.user.User;
 import com.agendaedu.schedule_service.projections.BookingResponseProjection;
 import com.agendaedu.schedule_service.repositories.BookingRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -46,25 +46,30 @@ public class BookingService {
         return new BookingDTO(booking);
     }
 
+    @Transactional(readOnly = true)
     public List<BookingResponseProjection> findBookingByUserId() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return this.bookingRepository.findByUserId(user.getId());
     }
 
+    @Transactional(readOnly = true)
     public List<BookingDTO> findBookingByDateAndLocal(LocalDate date, Long localId) {
         return this.bookingRepository.findBookingByDateAndLocal(date, localId).stream().map(BookingDTO::new).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public List<BookingDTO> findAll() {
         return this.bookingRepository.findAll().stream().map(BookingDTO::new).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public List<LocalTime> findPossiblesCheckIn(List<BookingDTO> bookingsFiltered) {
         List<LocalTime> possiblesCheckIn = new ArrayList<>(removeHours(this.hours, bookingsFiltered, true));
         possiblesCheckIn.remove(possiblesCheckIn.size() - 1);
         return possiblesCheckIn;
     }
 
+    @Transactional(readOnly = true)
     public List<LocalTime> findPossiblesCheckOutWithCheckIn(List<BookingDTO> bookingsFiltered, LocalTime checkInSelected) {
         List<LocalTime> possiblesCheckOut = findPossiblesCheckOut(bookingsFiltered);
 
@@ -82,12 +87,14 @@ public class BookingService {
         return possiblesCheckOutWithCheckIn;
     }
 
+    @Transactional(readOnly = true)
     private List<LocalTime> findPossiblesCheckOut(List<BookingDTO> bookingsFiltered) {
         List<LocalTime> possiblesCheckOut = new ArrayList<>(removeHours(this.hours, bookingsFiltered, false));
         possiblesCheckOut.remove(0);
         return possiblesCheckOut;
     }
 
+    @Transactional(readOnly = true)
     private List<LocalTime> removeHours(List<LocalTime> hours, List<BookingDTO> bookingsFiltered, Boolean isCheckIn) {
         List<LocalTime> eliminados = new ArrayList<>();
 
@@ -102,6 +109,5 @@ public class BookingService {
 
         return hours.stream().filter(h -> !eliminados.contains(h)).toList();
     }
-
 
 }

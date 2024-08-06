@@ -31,9 +31,9 @@ public class AuthController {
         return ResponseEntity.ok(this.authService.login(data));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity register(@Valid @RequestBody RegisterRequestDTO data) {
-        RegisterReponseDTO account = this.authService.register(data);
+        RegisterReponseDTO account = this.authService.signup(data);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{email}")
                 .buildAndExpand(account.email()).toUri();
         return ResponseEntity.created(uri).body(account);
