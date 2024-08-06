@@ -1,8 +1,8 @@
 package com.agendaedu.schedule_service.repositories;
 
-import com.agendaedu.schedule_service.domain.booking.BookingDTO;
 import com.agendaedu.schedule_service.domain.booking.BookingEntity;
 import com.agendaedu.schedule_service.projections.BookingProjection;
+import com.agendaedu.schedule_service.projections.BookingResponseProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -21,7 +21,24 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
     )
     List<BookingProjection> findBookingByDateAndLocal(LocalDate date, Long localId);
 
-    List<BookingEntity> findByUserId(Long id);
+    @Query(nativeQuery = true,
+            value = """
+                        SELECT
+                            b.id, b.date,
+                            b.check_in,
+                            b.check_out,
+                            l.name as local_name,
+                            b.course,
+                            b.user_id
+                        FROM
+                            TB_BOOKING b
+                        JOIN
+                            TB_LOCAL l ON b.local_id = l.id
+                        WHERE
+                            USER_ID = :id
+                    """
+    )
+    List<BookingResponseProjection> findByUserId(Long id);
 
 }
 

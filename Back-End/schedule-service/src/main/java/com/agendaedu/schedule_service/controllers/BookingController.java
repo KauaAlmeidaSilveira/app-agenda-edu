@@ -1,6 +1,7 @@
 package com.agendaedu.schedule_service.controllers;
 
 import com.agendaedu.schedule_service.domain.booking.BookingDTO;
+import com.agendaedu.schedule_service.projections.BookingResponseProjection;
 import com.agendaedu.schedule_service.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class BookingController {
     }
 
     @GetMapping("/myBookings")
-    public ResponseEntity<List<BookingDTO>> findBookingsByUserId() {
+    public ResponseEntity<List<BookingResponseProjection>> findBookingsByUserId() {
         return ResponseEntity.ok(service.findBookingByUserId());
     }
 

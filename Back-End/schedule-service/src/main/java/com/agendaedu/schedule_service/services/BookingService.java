@@ -2,8 +2,9 @@ package com.agendaedu.schedule_service.services;
 
 import com.agendaedu.schedule_service.domain.booking.BookingDTO;
 import com.agendaedu.schedule_service.domain.booking.BookingEntity;
-import com.agendaedu.schedule_service.domain.local.Local;
+import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.domain.user.User;
+import com.agendaedu.schedule_service.projections.BookingResponseProjection;
 import com.agendaedu.schedule_service.repositories.BookingRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,9 @@ public class BookingService {
         return new BookingDTO(booking);
     }
 
-    public List<BookingDTO> findBookingByUserId(){
+    public List<BookingResponseProjection> findBookingByUserId() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return this.bookingRepository.findByUserId(user.getId()).stream().map(BookingDTO::new).toList();
+        return this.bookingRepository.findByUserId(user.getId());
     }
 
     public List<BookingDTO> findBookingByDateAndLocal(LocalDate date, Long localId) {

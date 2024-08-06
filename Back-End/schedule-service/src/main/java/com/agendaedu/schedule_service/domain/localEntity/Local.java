@@ -1,4 +1,4 @@
-package com.agendaedu.schedule_service.domain.local;
+package com.agendaedu.schedule_service.domain.localEntity;
 
 import com.agendaedu.schedule_service.domain.booking.BookingEntity;
 import jakarta.persistence.*;

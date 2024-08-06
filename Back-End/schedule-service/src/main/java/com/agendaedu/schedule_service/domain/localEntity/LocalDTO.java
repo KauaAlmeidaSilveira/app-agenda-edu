@@ -1,4 +1,4 @@
-package com.agendaedu.schedule_service.domain.local;
+package com.agendaedu.schedule_service.domain.localEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

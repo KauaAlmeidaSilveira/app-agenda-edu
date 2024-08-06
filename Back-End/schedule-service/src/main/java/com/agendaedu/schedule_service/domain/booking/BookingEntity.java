@@ -1,6 +1,6 @@
 package com.agendaedu.schedule_service.domain.booking;
 
-import com.agendaedu.schedule_service.domain.local.Local;
+import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

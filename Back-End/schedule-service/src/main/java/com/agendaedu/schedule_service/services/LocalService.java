@@ -1,7 +1,6 @@
 package com.agendaedu.schedule_service.services;
-
-import com.agendaedu.schedule_service.domain.local.Local;
-import com.agendaedu.schedule_service.domain.local.LocalDTO;
+import com.agendaedu.schedule_service.domain.localEntity.LocalDTO;
+import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.repositories.LocalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,4 +24,5 @@ public class LocalService {
     public LocalDTO findById(Long id) {
         return new LocalDTO(this.localRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Local not found")));
     }
+
 }
