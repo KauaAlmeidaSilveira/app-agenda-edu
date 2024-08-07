@@ -2,6 +2,7 @@ package com.agendaedu.schedule_service.services;
 
 import com.agendaedu.schedule_service.domain.booking.BookingDTO;
 import com.agendaedu.schedule_service.domain.booking.BookingEntity;
+import com.agendaedu.schedule_service.domain.booking.BookingStatus;
 import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.domain.user.User;
 import com.agendaedu.schedule_service.projections.BookingResponseProjection;
@@ -16,6 +17,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,8 +43,20 @@ public class BookingService {
 
         booking.setLocal(new Local(localService.findById(bookingDTO.getLocalId())));
         booking.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        booking.setStatus(BookingStatus.ACTIVE);
 
         booking = this.bookingRepository.save(booking);
+        return new BookingDTO(booking);
+    }
+
+    @Transactional
+    public BookingDTO disableBookingById(Long id){
+        BookingEntity booking = this.bookingRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Booking não encontrado"));
+
+        booking.setStatus(BookingStatus.DISABLED);
+        booking = this.bookingRepository.save(booking);
+
         return new BookingDTO(booking);
     }
 

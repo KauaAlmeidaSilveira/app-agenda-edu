@@ -13,7 +13,7 @@ INSERT INTO tb_local (name) VALUES ('Sala 202');
 INSERT INTO tb_local (name) VALUES ('Laboratório 3');
 
 
-INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-03', '09:00:00', '12:00:00', 'Maternal', 1, 1);
-INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-03', '12:00:00', '13:00:00', 'Jardim', 1, 1);
-INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-03', '15:00:00', '17:00:00', 'Pré', 1, 1);
-INSERT INTO tb_booking (date, check_in, check_out, course, local_id, user_id) VALUES ('2024-08-03', '13:00:00', '14:00:00', '1º Ano', 1, 1);
+INSERT INTO tb_booking (date, check_in, check_out, course, status, local_id, user_id) VALUES ('2024-08-03', '09:00:00', '12:00:00', 'Maternal', 'ACTIVE', 1, 1);
+INSERT INTO tb_booking (date, check_in, check_out, course, status, local_id, user_id) VALUES ('2024-08-03', '12:00:00', '13:00:00', 'Jardim', 'ACTIVE', 1, 1);
+INSERT INTO tb_booking (date, check_in, check_out, course, status, local_id, user_id) VALUES ('2024-08-03', '15:00:00', '17:00:00', 'Pré', 'ACTIVE', 1, 1);
+INSERT INTO tb_booking (date, check_in, check_out, course, status, local_id, user_id) VALUES ('2024-08-03', '13:00:00', '14:00:00', '1º Ano', 'ACTIVE', 1, 1);

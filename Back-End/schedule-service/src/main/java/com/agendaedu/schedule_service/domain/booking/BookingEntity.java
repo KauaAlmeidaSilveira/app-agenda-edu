@@ -25,6 +25,8 @@ public class BookingEntity {
     private LocalTime checkIn;
     private LocalTime checkOut;
     private String course;
+    @Enumerated(EnumType.STRING)
+    private BookingStatus status;
 
     @ManyToOne
     private Local local;
@@ -38,5 +40,6 @@ public class BookingEntity {
         this.checkIn = bookingDTO.getCheckIn();
         this.checkOut = bookingDTO.getCheckOut();
         this.course = bookingDTO.getCourse();
+        this.status = bookingDTO.getStatus();
     }
 }

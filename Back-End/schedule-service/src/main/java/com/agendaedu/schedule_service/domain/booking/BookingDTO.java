@@ -20,6 +20,7 @@ public class BookingDTO {
     private LocalTime checkIn;
     private LocalTime checkOut;
     private String course;
+    private BookingStatus status;
     private Long userId;
 
     public BookingDTO(BookingEntity bookingEntity) {
@@ -29,6 +30,7 @@ public class BookingDTO {
         this.checkIn = bookingEntity.getCheckIn();
         this.checkOut = bookingEntity.getCheckOut();
         this.course = bookingEntity.getCourse();
+        this.status = bookingEntity.getStatus();
         this.userId = bookingEntity.getUser().getId();
     }
 

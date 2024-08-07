@@ -9,14 +9,19 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
+public interface  BookingRepository extends JpaRepository<BookingEntity, Long> {
 
     @Query(nativeQuery = true,
             value = """
                         SELECT *
-                        FROM TB_BOOKING
-                        WHERE LOCAL_ID = :localId
-                        AND DATE = :date
+                        FROM
+                            TB_BOOKING
+                        WHERE
+                            LOCAL_ID = :localId
+                        AND
+                            DATE = :date
+                        AND
+                            STATUS = 'ACTIVE'
                     """
     )
     List<BookingProjection> findBookingByDateAndLocal(LocalDate date, Long localId);
@@ -35,7 +40,9 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
                         JOIN
                             TB_LOCAL l ON b.local_id = l.id
                         WHERE
-                            USER_ID = :id
+                            b.user_id = :id
+                        AND
+                            b.status = 'ACTIVE'
                     """
     )
     List<BookingResponseProjection> findByUserId(Long id);
