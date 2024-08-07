@@ -7,6 +7,7 @@ import com.agendaedu.schedule_service.domain.localEntity.Local;
 import com.agendaedu.schedule_service.domain.user.User;
 import com.agendaedu.schedule_service.projections.BookingResponseProjection;
 import com.agendaedu.schedule_service.repositories.BookingRepository;
+import com.agendaedu.schedule_service.services.exceptions.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -50,9 +51,15 @@ public class BookingService {
     }
 
     @Transactional
-    public BookingDTO disableBookingById(Long id){
-        BookingEntity booking = this.bookingRepository.findById(id)
+    public BookingDTO disableBookingById(Long bookingId){
+        BookingEntity booking = this.bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new NoSuchElementException("Booking não encontrado"));
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(!booking.getUser().getId().equals(user.getId())){
+            throw new InvalidCredentialsException("O agendamento não pertence ao usuario !!");
+        }
 
         booking.setStatus(BookingStatus.DISABLED);
         booking = this.bookingRepository.save(booking);
