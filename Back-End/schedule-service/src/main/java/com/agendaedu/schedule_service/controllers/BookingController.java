@@ -23,7 +23,7 @@ public class BookingController {
         return ResponseEntity.ok(service.insert(bookingDTO));
     }
 
-    @PatchMapping("/disable/{id}")
+    @PatchMapping("/disable/{bookingId}")
     public ResponseEntity<BookingDTO> disableBookingById(@PathVariable Long bookingId) {
         return ResponseEntity.ok(service.disableBookingById(bookingId));
     }
